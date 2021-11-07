@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.0.0...v1.0.1) (2021-11-07)
+
+
+### Bug Fixes
+
+* **toc:** call the right function on retry ([1b41bec](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/1b41bec100362382eaf1e0b5693c876e583140fc))
+
 # 1.0.0 (2021-11-07)
 
 
