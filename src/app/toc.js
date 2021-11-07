@@ -23,7 +23,7 @@ toc.selectNode = async function () {
     this.button = this.node.querySelector ('label');
 
     if (!this.node || !this.list) {
-      setTimeout (this.init.bind (this), 100);
+      setTimeout (this.selectNode.bind (this), 100);
     } else {
       resolve ();
     }
