@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.0.1...v1.1.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **toc:** handle the absence of ToC ([8c25db7](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/8c25db74bc9880af769bc2e13f495ca1006e6e1c))
+
+
+### Features
+
+* add new positioning when article is written from right to left (fixes [#1](https://github.com/bamdadsabbagh/wikipedia-plus--extension/issues/1)) ([4682ba0](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/4682ba0b58c78dee4174649f474dd7f8590c04cd))
+
 ## [1.0.1](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.0.0...v1.0.1) (2021-11-07)
 
 
