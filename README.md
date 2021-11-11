@@ -21,4 +21,10 @@ Add multiple features to <a href="https://www.wikipedia.org">wikipedia.org</a>
 ## 📖 Features
 
 - Floating Table of Contents
-  - Hover to show the table
+    - Hover to show the table
+
+## 🚀 Download
+
+**[<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-chrome-icon.png">Chrome](https://chrome.google.com/webstore/detail/wikipedia%20/kdajpcjipejndikbjabigodoeaaoopkg)**
+
+**[<img height=30 src="https://icons.iconarchive.com/icons/cornmanthe3rd/plex/256/Internet-firefox-icon.png">Firefox](https://addons.mozilla.org/en-US/firefox/addon/wikipedia-plus)**
