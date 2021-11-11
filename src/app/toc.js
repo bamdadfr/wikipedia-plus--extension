@@ -7,6 +7,7 @@ toc.node = null;
 toc.list = null;
 toc.button = null;
 toc.isFolded = false;
+toc.direction = null;
 
 toc.init = async function () {
   try {
@@ -34,19 +35,28 @@ toc.selectNode = async function () {
 };
 
 toc.parseNode = function () {
+  this.direction = this.node.querySelector ('.toctitle').getAttribute ('dir');
   this.list = this.node.querySelector ('ul');
   this.button = this.node.querySelector ('label');
 };
 
 toc.applyStyles = function () {
+  // set toc node position
   this.node.style.position = 'fixed';
-  this.node.style.top = '5px';
-  this.node.style.left = '5px';
   this.node.style.zIndex = '1000';
-  this.node.style.transition = 'all 1s ease-out';
 
+  if (this.direction === 'rtl') {
+    this.node.style.top = '5px';
+    this.node.style.right = '5px';
+  } else {
+    this.node.style.top = '5px';
+    this.node.style.left = '5px';
+  }
+
+  // hide toc button
   this.button.parentNode.style.display = 'none';
 
+  // make the list scrollable
   this.list.style.overflowY = 'scroll';
   this.list.style.height = '80vh';
 };
