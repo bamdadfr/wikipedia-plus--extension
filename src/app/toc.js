@@ -9,25 +9,33 @@ toc.button = null;
 toc.isFolded = false;
 
 toc.init = async function () {
-  await this.selectNode ();
-  this.moveNode ();
-  this.applyStyles ();
-  this.attachEvents ();
-  this.toggle ();
+  try {
+    await this.selectNode ();
+    this.parseNode ();
+    this.moveNode ();
+    this.applyStyles ();
+    this.attachEvents ();
+    this.toggle ();
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log (err);
+  }
 };
 
 toc.selectNode = async function () {
-  return new Promise ((resolve) => {
+  return new Promise ((resolve, reject) => {
     this.node = document.querySelector (this.selector);
-    this.list = this.node.querySelector ('ul');
-    this.button = this.node.querySelector ('label');
-
-    if (!this.node || !this.list) {
-      setTimeout (this.selectNode.bind (this), 100);
+    if (!this.node) {
+      reject (new Error ('Could not select the Table of Contents'));
     } else {
       resolve ();
     }
   });
+};
+
+toc.parseNode = function () {
+  this.list = this.node.querySelector ('ul');
+  this.button = this.node.querySelector ('label');
 };
 
 toc.applyStyles = function () {
