@@ -7,38 +7,56 @@ toc.node = null;
 toc.list = null;
 toc.button = null;
 toc.isFolded = false;
+toc.direction = null;
 
 toc.init = async function () {
-  await this.selectNode ();
-  this.moveNode ();
-  this.applyStyles ();
-  this.attachEvents ();
-  this.toggle ();
+  try {
+    await this.selectNode ();
+    this.parseNode ();
+    this.moveNode ();
+    this.applyStyles ();
+    this.attachEvents ();
+    this.toggle ();
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log (err);
+  }
 };
 
 toc.selectNode = async function () {
-  return new Promise ((resolve) => {
+  return new Promise ((resolve, reject) => {
     this.node = document.querySelector (this.selector);
-    this.list = this.node.querySelector ('ul');
-    this.button = this.node.querySelector ('label');
-
-    if (!this.node || !this.list) {
-      setTimeout (this.selectNode.bind (this), 100);
+    if (!this.node) {
+      reject (new Error ('Could not select the Table of Contents'));
     } else {
       resolve ();
     }
   });
 };
 
-toc.applyStyles = function () {
-  this.node.style.position = 'fixed';
-  this.node.style.top = '5px';
-  this.node.style.left = '5px';
-  this.node.style.zIndex = '1000';
-  this.node.style.transition = 'all 1s ease-out';
+toc.parseNode = function () {
+  this.direction = this.node.querySelector ('.toctitle').getAttribute ('dir');
+  this.list = this.node.querySelector ('ul');
+  this.button = this.node.querySelector ('label');
+};
 
+toc.applyStyles = function () {
+  // set toc node position
+  this.node.style.position = 'fixed';
+  this.node.style.zIndex = '1000';
+
+  if (this.direction === 'rtl') {
+    this.node.style.top = '5px';
+    this.node.style.right = '5px';
+  } else {
+    this.node.style.top = '5px';
+    this.node.style.left = '5px';
+  }
+
+  // hide toc button
   this.button.parentNode.style.display = 'none';
 
+  // make the list scrollable
   this.list.style.overflowY = 'scroll';
   this.list.style.height = '80vh';
 };
