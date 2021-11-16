@@ -1,3 +1,15 @@
+## [1.1.1](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.0...v1.1.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* use absolute `show` `hide` methods replacing `toggle` ([542d60a](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/542d60ad1ab895d4c9946708cd50b810925501af))
+
+
+### Performance Improvements
+
+* update dependencies ([4dff724](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/4dff7246ae67cf9417630d1fe63d969e6a085877))
+
 # [1.1.0](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.0.1...v1.1.0) (2021-11-11)
 
 
