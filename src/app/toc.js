@@ -58,7 +58,7 @@ toc.applyStyles = function () {
 
   // make the list scrollable
   this.list.style.overflowY = 'scroll';
-  this.list.style.height = '80vh';
+  this.list.style.maxHeight = '80vh';
 };
 
 toc.moveNode = function () {
@@ -66,8 +66,8 @@ toc.moveNode = function () {
 };
 
 toc.attachEvents = function () {
-  this.node.addEventListener ('mouseenter', () => this.show ());
-  this.node.addEventListener ('mouseleave', () => this.hide ());
+  this.node.onmouseenter = () => this.show ();
+  this.node.onmouseleave = () => this.hide ();
 };
 
 toc.show = function () {
