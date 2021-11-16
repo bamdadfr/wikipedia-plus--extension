@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.1...v1.1.2) (2021-11-16)
+
+
+### Performance Improvements
+
+* replace `height` directive with `max-height` + set unique events ([aa349b1](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/aa349b12362b81919931eea46387c922b6a1cc85))
+
 ## [1.1.1](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.0...v1.1.1) (2021-11-16)
 
 
