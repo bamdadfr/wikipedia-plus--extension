@@ -16,7 +16,7 @@ toc.init = async function () {
     this.moveNode ();
     this.applyStyles ();
     this.attachEvents ();
-    this.toggle ();
+    this.hide ();
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log (err);
@@ -66,11 +66,16 @@ toc.moveNode = function () {
 };
 
 toc.attachEvents = function () {
-  this.node.addEventListener ('mouseenter', () => this.toggle ());
-  this.node.addEventListener ('mouseleave', () => this.toggle ());
+  this.node.addEventListener ('mouseenter', () => this.show ());
+  this.node.addEventListener ('mouseleave', () => this.hide ());
 };
 
-toc.toggle = function () {
-  this.isFolded = !this.isFolded;
+toc.show = function () {
+  this.isFolded = true;
+  this.button.click ();
+};
+
+toc.hide = function () {
+  this.isFolded = true;
   this.button.click ();
 };
