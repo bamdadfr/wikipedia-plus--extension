@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.2...v1.1.3) (2021-11-17)
+
+
+### Performance Improvements
+
+* use new eslint config + merge objects to class ([e477bd3](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/e477bd32bc2952b7610df4eb08589b6e5ec44b68))
+
 ## [1.1.2](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.1...v1.1.2) (2021-11-16)
 
 
