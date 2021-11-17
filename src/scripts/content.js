@@ -1,5 +1,13 @@
-import { main } from '../app/main';
+import {TableOfContents} from '../app/TableOfContents';
 
-window.addEventListener ('load', async () => {
-  await main.init ();
+const packageJson = require('../../package.json');
+
+window.addEventListener('load', async () => {
+  const toc = new TableOfContents();
+
+  // eslint-disable-next-line no-console
+  console.log('Wikipedia+ Extension', {
+    version: packageJson.version,
+    toc,
+  });
 });
