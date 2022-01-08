@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.4...v1.1.5) (2022-01-08)
+
+
+### Bug Fixes
+
+* Clean file + Adapt to legacy layouts ([19dbf62](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/19dbf624fd76d4514c094b3e246ae8ef6ae58394))
+
 ## [1.1.4](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.3...v1.1.4) (2022-01-08)
 
 
