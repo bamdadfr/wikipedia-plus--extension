@@ -1,7 +1,7 @@
 export class TableOfContents {
   constructor() {
     this.createContainer();
-    this.initializeNode();
+    this.initializeNode().then(() => this.watchNode());
   }
 
   createContainer() {
@@ -9,14 +9,14 @@ export class TableOfContents {
     document.body.insertBefore(this.container, document.body.firstChild);
   }
 
+  isHidden() {
+    return document.cookie.includes('wikihidetoc=1');
+  }
+
   async initializeNode() {
     try {
       await this.fetchNode();
-      this.getNodeElements();
-      this.moveNode();
-      this.applyStyles();
-      this.attachEvents();
-      this.hide();
+      this.getElements();
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error);
@@ -34,17 +34,29 @@ export class TableOfContents {
     });
   }
 
-  getNodeElements() {
+  getElements() {
     this.direction = this.node.querySelector('.toctitle').getAttribute('dir');
     this.list = this.node.querySelector('ul');
-    this.button = this.node.querySelector('label');
+    this.toggle = this.node.querySelector('label');
+    this.header = document.querySelector('.mw-header');
+    this.sidebar = document.querySelector('#mw-panel');
+  }
+
+  watchNode() {
+    this.applyStyles();
+    this.attachEvents();
   }
 
   applyStyles() {
-    // set toc node position
+    // clean overlapping elements
+    this.header.style.zIndex = '0';
+    this.sidebar.style.zIndex = '0';
+
+    // set position
     this.node.style.position = 'fixed';
     this.node.style.zIndex = '1000';
 
+    // set direction
     if (this.direction === 'rtl') {
       this.node.style.top = '5px';
       this.node.style.right = '5px';
@@ -53,28 +65,16 @@ export class TableOfContents {
       this.node.style.left = '5px';
     }
 
-    // hide toc button
-    this.button.parentNode.style.display = 'none';
+    // hide button
+    this.toggle.parentNode.style.display = 'none';
 
-    // make the list scrollable
+    // set fixed height and add scrollbar
     this.list.style.overflowY = 'scroll';
     this.list.style.maxHeight = '80vh';
   }
 
-  moveNode() {
-    this.container.appendChild(this.node);
-  }
-
   attachEvents() {
-    this.node.onmouseenter = () => this.show();
-    this.node.onmouseleave = () => this.hide();
-  }
-
-  show() {
-    this.button.click();
-  }
-
-  hide() {
-    this.button.click();
+    this.node.onmouseenter = () => this.isHidden() && this.toggle.click();
+    this.node.onmouseleave = () => !this.isHidden() && this.toggle.click();
   }
 }
