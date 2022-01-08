@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.3...v1.1.4) (2022-01-08)
+
+
+### Bug Fixes
+
+* Prevent mouse event inversions by referring to mediawiki state ([4fd739a](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/4fd739ab86cf50d92ac28942ae734c3e1efcb8d7)), closes [#21](https://github.com/bamdadsabbagh/wikipedia-plus--extension/issues/21)
+
 ## [1.1.3](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.2...v1.1.3) (2021-11-17)
 
 
