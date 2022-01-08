@@ -1,19 +1,13 @@
 export class TableOfContents {
   constructor() {
-    this.createContainer();
-    this.initializeNode().then(() => this.watchNode());
-  }
-
-  createContainer() {
-    this.container = document.createElement('div');
-    document.body.insertBefore(this.container, document.body.firstChild);
+    this.initialize().then(() => this.watch());
   }
 
   isHidden() {
     return document.cookie.includes('wikihidetoc=1');
   }
 
-  async initializeNode() {
+  async initialize() {
     try {
       await this.fetchNode();
       this.getElements();
@@ -42,15 +36,25 @@ export class TableOfContents {
     this.sidebar = document.querySelector('#mw-panel');
   }
 
-  watchNode() {
+  watch() {
+    if (!this.node) {
+      return;
+    }
+
     this.applyStyles();
     this.attachEvents();
   }
 
   applyStyles() {
-    // clean overlapping elements
-    this.header.style.zIndex = '0';
-    this.sidebar.style.zIndex = '0';
+    if (this.header && this.sidebar) {
+      // new layout
+      this.header.style.zIndex = '0';
+      this.sidebar.style.zIndex = '0';
+    } else {
+      // legacy layout
+      this.nav = document.querySelector('#mw-navigation');
+      document.body.insertBefore(this.nav, document.body.firstElementChild);
+    }
 
     // set position
     this.node.style.position = 'fixed';
