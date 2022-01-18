@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.5...v1.1.6) (2022-01-18)
+
+
+### Performance Improvements
+
+* update dependencies ([8e66490](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/8e664908708f719e5c4f526270af375633c19ba6))
+
 ## [1.1.5](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.4...v1.1.5) (2022-01-08)
 
 
