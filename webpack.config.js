@@ -1,43 +1,49 @@
-const CopyPlugin = require ('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 
 // eslint-disable-next-line no-console
-console.log ('Production mode is: ', isProduction);
+console.log('Production mode is: ', isProduction);
 
 module.exports = {
-  'watch': !isProduction,
-  'mode': isProduction ? 'production' : 'development',
-  'devtool': isProduction ? false : 'eval-source-map',
-  'entry': {
-    'scripts/content': './src/scripts/content.js',
-    'scripts/background': './src/scripts/background.js',
+  watch: !isProduction,
+  mode: isProduction ? 'production' : 'development',
+  devtool: isProduction ? false : 'eval-source-map',
+  entry: {
+    'scripts/content': './src/scripts/content.ts',
+    'scripts/background': './src/scripts/background.ts',
   },
-  'output': {
-    'publicPath': '',
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
-  'node': false,
-  'plugins': [
-    new CopyPlugin ({
-      'patterns': [
+  output: {
+    publicPath: '',
+  },
+  node: false,
+  plugins: [
+    new CopyPlugin({
+      patterns: [
         {
-          'from': './src/manifest.json',
-          'to': 'manifest.json',
+          from: './src/manifest.json',
+          to: 'manifest.json',
         },
         {
-          'from': './src/assets',
-          'to': 'assets',
+          from: './src/assets',
+          to: 'assets',
         },
       ],
     }),
   ],
-  'module': {
-    'rules': [
+  module: {
+    rules: [
       {
-        'test': /\.js$/,
-        'exclude': /node_modules/,
-        'use': {
-          'loader': 'babel-loader',
-        },
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
