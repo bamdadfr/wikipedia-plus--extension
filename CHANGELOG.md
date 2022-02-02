@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.6...v1.1.7) (2022-02-02)
+
+
+### Performance Improvements
+
+* **Tests:** Add typescript + typings + jest + basic unit testing ([fee551b](https://github.com/bamdadsabbagh/wikipedia-plus--extension/commit/fee551b20200b6d013b1e00db8fa5f630c48417c))
+
 ## [1.1.6](https://github.com/bamdadsabbagh/wikipedia-plus--extension/compare/v1.1.5...v1.1.6) (2022-01-18)
 
 
