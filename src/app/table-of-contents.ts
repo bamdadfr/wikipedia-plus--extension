@@ -1,15 +1,29 @@
 export class TableOfContents {
+  private node: HTMLDivElement;
+
+  private direction: string;
+
+  private list: HTMLUListElement;
+
+  private toggle: HTMLLabelElement;
+
+  private header: HTMLHeadElement;
+
+  private sidebar: HTMLDivElement;
+
+  private nav: HTMLDivElement;
+
   constructor() {
     this.initialize().then(() => this.watch());
   }
 
-  isHidden() {
+  private static isHidden() {
     return document.cookie.includes('wikihidetoc=1');
   }
 
-  async initialize() {
+  private async initialize() {
     try {
-      await this.fetchNode();
+      await this.getNode();
       this.getElements();
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -17,7 +31,7 @@ export class TableOfContents {
     }
   }
 
-  async fetchNode() {
+  private async getNode(): Promise<void> {
     return new Promise((resolve, reject) => {
       this.node = document.querySelector('#toc');
       if (!this.node) {
@@ -28,7 +42,7 @@ export class TableOfContents {
     });
   }
 
-  getElements() {
+  private getElements() {
     this.direction = this.node.querySelector('.toctitle').getAttribute('dir');
     this.list = this.node.querySelector('ul');
     this.toggle = this.node.querySelector('label');
@@ -36,7 +50,7 @@ export class TableOfContents {
     this.sidebar = document.querySelector('#mw-panel');
   }
 
-  watch() {
+  private watch() {
     if (!this.node) {
       return;
     }
@@ -45,7 +59,7 @@ export class TableOfContents {
     this.attachEvents();
   }
 
-  applyStyles() {
+  private applyStyles() {
     if (this.header && this.sidebar) {
       // new layout
       this.header.style.zIndex = '0';
@@ -70,15 +84,15 @@ export class TableOfContents {
     }
 
     // hide button
-    this.toggle.parentNode.style.display = 'none';
+    this.toggle.parentElement.style.display = 'none';
 
     // set fixed height and add scrollbar
     this.list.style.overflowY = 'scroll';
     this.list.style.maxHeight = '80vh';
   }
 
-  attachEvents() {
-    this.node.onmouseenter = () => this.isHidden() && this.toggle.click();
-    this.node.onmouseleave = () => !this.isHidden() && this.toggle.click();
+  private attachEvents() {
+    this.node.onmouseenter = () => TableOfContents.isHidden() && this.toggle.click();
+    this.node.onmouseleave = () => !TableOfContents.isHidden() && this.toggle.click();
   }
 }
